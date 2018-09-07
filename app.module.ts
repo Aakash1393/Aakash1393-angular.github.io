@@ -13,7 +13,11 @@ import{ FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import{HttpClient} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToastModule} from 'ng2-toastr';
+import {ToastaModule} from 'ngx-toasta';
+import {ToastaService } from 'ngx-toasta';
+import {ToastaConfig} from 'ngx-toasta';
+import {ToastOptions} from 'ngx-toasta';
+import {ToastData} from 'ngx-toasta';
 
 
 @NgModule({
@@ -24,14 +28,18 @@ import {ToastModule} from 'ng2-toastr';
     BlogCreateComponent,
     BlogEditComponent,
     AboutComponent,
+    
     // NotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    
+    
+    
     FormsModule,
-    ToastModule.forRoot(),
+    ToastaModule.forRoot(),
     RouterModule.forRoot([
     {path:'home',component:HomeComponent},  
     {path:'',redirectTo:'home',pathMatch:'full'},
@@ -43,7 +51,8 @@ import {ToastModule} from 'ng2-toastr';
     // {path:'**',component:NotFoundComponent}
   ])
   ],
-  providers: [BlogService,BlogHttpService,HttpClient],
+
+  providers: [BlogService,BlogHttpService,ToastaService,ToastaConfig,ToastOptions,ToastData,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
